@@ -15,11 +15,18 @@
  -High-Reasoning LLM: Utilizes Llama-3.3-70b-versatile via Groq API to ensure the model can perform complex legal reasoning and handle long contexts without hallucination.
 
 ## System Architecture
- 1- Extraction: Deep text extraction using pdfplumber.
- 2- Pre-processing: Arabic text reshaping and bidirectional re-ordering to ensure the LLM "reads" the text correctly.
- 3- Indexing: FAISS vector store for high-speed similarity search.
- 4- Retrieval: Top-K context retrieval (optimized k=3 to 5 for dense legal text).
- 5- Generation: Prompt-engineered LLM responses that strictly adhere to the provided context and cite   article numbers.
+
+```mermaid
+graph TD
+    A[Legal PDFs] -->|pdfplumber| B(Arabic Text Correction)
+    B --> C{Text Splitter}
+    C -->|Chunks| D[HuggingFace Embeddings]
+    D --> E[(FAISS Vector DB)]
+    
+    F[User Query] --> G[Semantic Search]
+    E -.->|Retrieve Context| G
+    G --> H[Llama-3.3-70b LLM]
+    H --> I[Professional Legal Answer]
 
 
 ## Technical Test Requirements Covered
@@ -58,17 +65,6 @@
 - Fine-tuned Legal Embeddings: Training on a corpus of Libyan High Court rulings.
 
 
-```mermaid
-graph TD
-    A[Legal PDFs] -->|pdfplumber| B(Arabic Text Correction)
-    B --> C{Text Splitter}
-    C -->|Chunks| D[HuggingFace Embeddings]
-    D --> E[(FAISS Vector DB)]
-    
-    F[User Query] --> G[Semantic Search]
-    E -.->|Retrieve Context| G
-    G --> H[Llama-3.3-70b LLM]
-    H --> I[Professional Legal Answer]
     
 Author: Tasneem Sheeha 
 Project: Seela AI Technical Task
