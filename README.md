@@ -58,7 +58,8 @@
 - Fine-tuned Legal Embeddings: Training on a corpus of Libyan High Court rulings.
 
 
- ## graph TD
+```mermaid
+graph TD
     A[Legal PDFs] -->|pdfplumber| B(Arabic Text Correction)
     B --> C{Text Splitter}
     C -->|Chunks| D[HuggingFace Embeddings]
@@ -67,7 +68,7 @@
     F[User Query] --> G[Semantic Search]
     E -.->|Retrieve Context| G
     G --> H[Llama-3.3-70b LLM]
-    H --> I[Professional Legal Answer] 
+    H --> I[Professional Legal Answer]
     
 Author: Tasneem Sheeha 
 Project: Seela AI Technical Task
