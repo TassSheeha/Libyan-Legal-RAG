@@ -14,18 +14,7 @@ Unlike standard RAG implementations, this project addresses specific local chall
 ## System Architecture
 
 ## System Architecture
-
-```mermaid
-graph TD
-    A["Legal PDFs"] -->|"pdfplumber"| B("Arabic Text Correction")
-    B --> C{"Text Splitter"}
-    C -->|"Chunks"| D["HuggingFace Embeddings"]
-    D --> E[("FAISS Vector DB")]
-    
-    F["User Query"] --> G["Semantic Search"]
-    E -.->|"Retrieve Context"| G
-    G --> H["Llama-3.3-70b LLM"]
-    H --> I["Professional Legal Answer"]
+![System Architecture](Assets/architecture.png)
 
 
 ## Technical Test Requirements Covered
