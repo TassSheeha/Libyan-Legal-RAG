@@ -1,18 +1,15 @@
 # Legal-Insight-RAG (Libyan Legal Context)
 
 ## Overview
- Legal-Insight-RAG is an advanced Retrieval-Augmented Generation (RAG) system specifically designed to handle the complexities of Libyan Legal Documents. Developed for the Seela AI Technical Test, this system focuses on delivering grounded, accurate answers from specialized legal PDFs while overcoming common challenges in Arabic OCR and legal text structure.
+Legal-Insight-RAG is an advanced Retrieval-Augmented Generation (RAG) system specifically designed to handle the complexities of Libyan Legal Documents. Developed for the Seela AI Technical Test, this system focuses on delivering grounded, accurate answers from specialized legal PDFs while overcoming common challenges in Arabic OCR and legal text structure.
 
 ## Key Improvements & Technical Edge
- Unlike standard RAG implementations, this project addresses specific local challenges:
+Unlike standard RAG implementations, this project addresses specific local challenges:
 
- -Arabic Text Rectification: Implemented a specialized preprocessing layer using arabic-reshaper and python-bidi to fix "reversed text" issues commonly found in Libyan PDF exports (e.g., in libyan_law.pdf).
-
- -Legal-Specific Chunking: Used a RecursiveCharacterTextSplitter with custom separators (like "مادة", "المادة") to ensure legal articles remain intact and contextually coherent.
-
- -Multilingual Semantic Search: Switched to paraphrase-multilingual-MiniLM-L12-v2 embeddings, which are significantly more effective at understanding Arabic legal terminology than standard English models.
-
- -High-Reasoning LLM: Utilizes Llama-3.3-70b-versatile via Groq API to ensure the model can perform complex legal reasoning and handle long contexts without hallucination.
+- **Arabic Text Rectification**: Implemented a specialized preprocessing layer using `arabic-reshaper` and `python-bidi` to fix "reversed text" issues commonly found in Libyan PDF exports.
+- **Legal-Specific Chunking**: Used a `RecursiveCharacterTextSplitter` with custom separators (like "مادة", "المادة") to ensure legal articles remain intact.
+- **Multilingual Semantic Search**: Switched to `paraphrase-multilingual-MiniLM-L12-v2` embeddings for better Arabic terminology understanding.
+- **High-Reasoning LLM**: Utilizes `Llama-3.3-70b-versatile` via Groq API for complex legal reasoning.
 
 ## System Architecture
 
